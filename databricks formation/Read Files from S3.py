@@ -13,11 +13,11 @@ display(df)
 
 from pyspark.sql.functions import current_timestamp, current_date
 
-df = spark.read.format("csv") \
-        .option("header", "true") \
-        .option("delimiter", ",") \
+df = (spark.read.format("csv")
+        .option("header", "true")
+        .option("delimiter", ",")
         .load("s3://lakehouse-datawizard-dev/landing-dev/customer/")
-
+)
 
 df_final = df.select(
         df.id.alias("id"),
