@@ -1,0 +1,32 @@
+# This is a Databricks asset bundle definition for autoloader.
+# See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
+bundle:
+  name: autoloader
+
+include:
+  - resources/*.yml
+
+# Variable declarations. These variables are assigned in the dev/prod targets below.
+variables:
+  catalog:
+    description: The catalog to use
+  schema:
+    description: The schema to use
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://dbc-dfb14324-e95d.cloud.databricks.com
+    variables:
+      catalog: bronze_dev
+  prod:
+    mode: production
+    workspace:
+      host: https://dbc-dfb14324-e95d.cloud.databricks.com
+    variables:
+      catalog: bronze
+    permissions:
+      - user_name: daniel.epr77@gmail.com
+        level: CAN_MANAGE

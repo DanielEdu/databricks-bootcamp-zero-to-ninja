@@ -1,0 +1,37 @@
+# A sample job for datawizard_lakehouse.
+
+resources:
+  jobs:
+    pip_load_autoloader_brz:
+      name: pip_load_autoloader_brz
+      description: Load data with autoloader in bronze
+    
+      git_source:
+        git_url: https://github.com/DanielEdu/databricks-bootcamp-zero-to-ninja.git
+        git_provider: gitHub
+
+      trigger:
+        periodic:
+          interval: 1
+          unit: DAYS
+
+      email_notifications:
+       on_failure:
+         - daniel.epr77@gmail.com
+
+      parameters:
+        - name: catalog
+          default: ${var.catalog}
+        - name: schema
+          default: ${var.schema}
+
+      tasks:
+        - task_key: tsk-load-autoloader-brz
+          description: Load data with autoloader in bronze
+          notebook_task:
+            notebook_path: ../src/main.py
+
+      environments:
+        - environment_key: default
+          spec:
+            environment_version: "4"
