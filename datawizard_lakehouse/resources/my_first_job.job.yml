@@ -24,7 +24,7 @@ resources:
       tasks:
         - task_key: notebook_task
           notebook_task:
-            notebook_path: ../src/main.ipynb
+            notebook_path: ../src/main
 
       environments:
         - environment_key: default
