@@ -1,13 +1,13 @@
 # The main job for github_bundle.
 resources:
   jobs:
-    github_bundle_job: 
-      git_url: https://github.com/DanielEdu/databricks-bootcamp-zero-to-ninja.git
+    github_bundle_job:
       name: github_bundle_job
     
       git_source:
-        git_url:
+        git_url: https://github.com/DanielEdu/databricks-bootcamp-zero-to-ninja.git
         git_provider: github
+        git_branch: main
 
       schedule:
         # Run every day at 8:37 AM
@@ -20,8 +20,6 @@ resources:
 
       tasks:
         - task_key: notebook_task
-          job_cluster_key: job_cluster
           notebook_task:
-            notebook_path: ../src/notebook
+            notebook_path: github_bundle/src/notebook
             source: GIT
-
