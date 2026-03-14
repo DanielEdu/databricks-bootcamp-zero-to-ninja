@@ -30,10 +30,10 @@ resources:
           description: Load data with autoloader in bronze
           environment_key: default
           notebook_task:
-            notebook_path: autoloader/src/main.py
+            notebook_path: autoloader/src/main
             source: GIT
 
       environments:
         - environment_key: default
           spec:
-            client: "1"
+            client: "2"

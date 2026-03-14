@@ -1,0 +1,19 @@
+# The main job for autoloader_s3_brz.
+resources:
+  jobs:
+    autoloader_s3_brz_job:
+      name: autoloader_s3_brz_job
+
+      schedule:
+        # Run every day at 1:00 AM Lima, Peru (UTC-5)
+        quartz_cron_expression: '0 0 1 * * ?'
+        timezone_id: America/Lima
+
+      email_notifications:
+        on_failure:
+          - daniel.epr77@gmail.com
+
+      tasks:
+        - task_key: tsk-autoloader_s3_brz_job
+          notebook_task:
+            notebook_path: ../src/notebook.py

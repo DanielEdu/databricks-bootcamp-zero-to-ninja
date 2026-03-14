@@ -1,0 +1,25 @@
+# This is a Databricks asset bundle definition for github_bundle.
+# See https://docs.databricks.com/dev-tools/bundles/index.html for documentation.
+bundle:
+  name: github_bundle
+
+include:
+  - resources/*.yml
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://dbc-dfb14324-e95d.cloud.databricks.com
+      root_path: /Users/daniel.epr77@gmail.com/.bundle/${bundle.name}/${bundle.target}
+
+
+  prod:
+    mode: production
+    workspace:
+      host: https://dbc-dfb14324-e95d.cloud.databricks.com
+      root_path: /Workspace/datawizard_dlh/_bundle/${bundle.name}/${bundle.target}
+    run_as:
+
+      user_name: daniel.epr77@gmail.com
